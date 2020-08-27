@@ -1,6 +1,6 @@
 import { Persona } from './persona.model';
 import { Injectable, EventEmitter } from '@angular/core';
-import { MensajesConsolaService } from './MensajesConsola.service'
+import { DataService } from './data.service';
 
 @Injectable()
 
@@ -10,17 +10,18 @@ export class PersonasService {
         new Persona("Flavia", "Griñan")
     ]
 
-    constructor() { }
+    constructor(private dataService: DataService) { }
 
 
 
     agregarPersona(persona: Persona) {
-        this.personas.push(persona)
+        this.personas.push(persona);
+        this.dataService.guardarPersonas(this.personas);
 
     }
 
     eliminarPersona(indice: number) {
-        this.personas.splice(indice, 1)
+        this.personas.splice(indice, 1);
     }
 
     // buscamos la persona con el indice, para modificarla

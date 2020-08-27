@@ -8,13 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PersonaComponent } from './personas/persona/persona.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
+import { PersonasComponent } from './personas/personas.component';
+import { ErrorComponent } from './error/error.component'
 
 /* DECLARACION DE SERVICIOS */
 /* global, sirve para todos los componentes */
 import { PersonasService } from './Personas.service';
 import { MensajesConsolaService } from './MensajesConsola.service';
-import { PersonasComponent } from './personas/personas.component';
-import { ErrorComponent } from './error/error.component'
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +30,10 @@ import { ErrorComponent } from './error/error.component'
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [PersonasService, MensajesConsolaService],
+  providers: [PersonasService, MensajesConsolaService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
