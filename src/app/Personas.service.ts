@@ -1,5 +1,5 @@
 import { Persona } from './persona.model';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 
 @Injectable()
@@ -19,6 +19,7 @@ export class PersonasService {
 
     agregarPersona(persona: Persona) {
 
+        // si no hay nada, es null, si es null no es un array, si no es un arrayy, no puedo hacer PUSH, pero no lo habia inicializado como array? ¿*?
         if (this.personas == null) {
             this.personas = [];
         }
@@ -30,6 +31,15 @@ export class PersonasService {
 
     eliminarPersona(indice: number) {
         this.personas.splice(indice, 1);
+        this.dataService.eliminarPersona(indice);
+        // Para arreglar los indices en la base de datos, vamos a guardar el array despues de borrar a una persona
+        this.modificarPersonas();
+    }
+
+    modificarPersonas() {
+        if (this.personas != null) {
+            this.dataService.guardarPersonas(this.personas)
+        }
     }
 
     // buscamos la persona con el indice, para modificarla
@@ -43,10 +53,7 @@ export class PersonasService {
         let persona = this.personas[index];
         persona.nombre = newPersona.nombre;
         persona.apellido = newPersona.apellido;
-
         this.dataService.modificarPersona(index, persona);
     }
-
-
 
 }

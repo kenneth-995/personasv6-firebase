@@ -40,8 +40,22 @@ export class DataService {
                     console.log('Error al modificar una persona: ' + error);
                 }
             )
-
-
-
     }
+
+    eliminarPersona(index: number) {
+        let url: string;
+
+        url = 'https://personasv6-firebase.firebaseio.com/datos/' + index + '.json';
+
+        this.httpClient.delete(url)
+            .subscribe(
+                (response) => {
+                    console.log('Eliminacion correcta: ' + response);
+                },
+                (error) => {
+                    console.log('Error al eliminar una persona: ' + error);
+                }
+            )
+    }
+
 }
