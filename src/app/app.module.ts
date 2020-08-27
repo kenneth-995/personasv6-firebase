@@ -18,7 +18,6 @@ import { MensajesConsolaService } from './MensajesConsola.service';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,

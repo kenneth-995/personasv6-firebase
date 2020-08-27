@@ -5,16 +5,24 @@ import { DataService } from './data.service';
 @Injectable()
 
 export class PersonasService {
-    personas: Persona[] = [
-        new Persona("Kenneth", "Griñan"),
-        new Persona("Flavia", "Griñan")
-    ]
+    personas: Persona[] = []
 
     constructor(private dataService: DataService) { }
 
+    obtenerPersonas() {
+        return this.dataService.cargarPersonas();
+    }
 
+    setPersonas(personas: Persona[]) {
+        this.personas = personas;
+    }
 
     agregarPersona(persona: Persona) {
+
+        if (this.personas == null) {
+            this.personas = [];
+        }
+
         this.personas.push(persona);
         this.dataService.guardarPersonas(this.personas);
 
