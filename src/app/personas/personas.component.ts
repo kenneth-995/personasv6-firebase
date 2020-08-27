@@ -27,7 +27,7 @@ export class PersonasComponent implements OnInit {
         }
       )
   }
-
+  // funcion que hace de enlace, manejar mejor por el router
   agregar() {
     this.router.navigate(['personas/agregar'])
   }

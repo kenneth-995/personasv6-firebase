@@ -43,6 +43,8 @@ export class PersonasService {
         let persona = this.personas[index];
         persona.nombre = newPersona.nombre;
         persona.apellido = newPersona.apellido;
+
+        this.dataService.modificarPersona(index, persona);
     }
 
 
