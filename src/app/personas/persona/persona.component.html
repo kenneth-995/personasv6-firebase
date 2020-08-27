@@ -1,14 +1,14 @@
 <div class="container border my-2">
     <h3>{{title}}</h3>
-    <ul>
-        <li>
+    <div class="row">
+        <div class="col-12 text-center">
             <!-- Nos permite manejar una ruta mapeada en el app-routing.module.ts -->
             <!-- le pasamos la ruta, y el parametro indice! -->
             <!-- Esta ruta esta configurada en el app-routing tal que asi: 
-                 { path: 'personas/:id', component: FormularioComponent } -->
+                    { path: 'personas/:id', component: FormularioComponent } -->
 
             <!-- CONSIDERAMOS QUE modoEdicion= 1 si estamos editando
-                                  modoEdicion= 0 si estamos insertando -->
+                                    modoEdicion= 0 si estamos insertando -->
             <a [routerLink]="['/personas', indice]" [queryParams]="{modoEdicion:'1'}">
                 {{persona.nombre}} {{persona.apellido}}
             </a>
@@ -17,9 +17,13 @@
             <a [routerLink]="['/personas', indice]" [queryParams]="{modoEdicion:'1'}" class="btn btn-warning">
                 Editar</a>
 
+        </div>
 
-        </li>
-    </ul>
+
+
+
+
+    </div>
 
 
 
